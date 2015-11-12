@@ -1,6 +1,7 @@
 import sys
 import os
 import tkinter
+from tkinter.messagebox import *
 
 fenetre = tkinter.Tk()
 fenetre.title("IPchange by Marc-Antoine FOURNIER")
@@ -25,7 +26,10 @@ def laptop():
 	lbl_range.configure(text="Choisissez le X dans 192.168.X." + last)
 
 def exxit():
-	sys.exit()
+	if askyesno('Quitter ?', 'Voulez-vous quitter ce superbe UI ?') :
+		sys.exit()
+	else :
+		pass
 
 def change():
 	gw = texte_gw.get()
@@ -50,6 +54,9 @@ def dhcp():
 	os.system("netsh int ip set dns " + interface + " dhcp")
 	os.system("ipconfig /all")
 
+def pinggoogle():
+	os.system("ping 8.8.8.8")
+
 lbl_int = tkinter.Label(fenetre, text="Quelle interface vous choisissez ?")
 btn_dock = tkinter.Button(fenetre, text="DOCK", command=dock)
 btn_laptop = tkinter.Button(fenetre, text="LAPTOP", command=laptop)
@@ -62,6 +69,7 @@ texte_dns = tkinter.Entry(fenetre)
 btn_ok = tkinter.Button(fenetre, text = "RESET WITH", command=change)
 btn_add = tkinter.Button(fenetre, text="ADD THIS", command=add)
 btn_dhcp = tkinter.Button(fenetre, text="DHCP", command=dhcp)
+btn_pingwantest = tkinter.Button(fenetre, text="PING GOOGLE", command=pinggoogle)
 btn_quit = tkinter.Button(fenetre, text="QUIT", command=exxit)
 
 lbl_int.pack()
@@ -76,5 +84,6 @@ texte_dns.pack()
 btn_ok.pack()
 btn_add.pack()
 btn_dhcp.pack()
+btn_pingwantest.pack()
 btn_quit.pack()
 fenetre.mainloop()
