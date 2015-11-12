@@ -2,6 +2,7 @@ import sys
 import os
 import tkinter
 from tkinter.messagebox import *
+from tkinter import *
 
 fenetre = tkinter.Tk()
 fenetre.title("IPchange by Marc-Antoine FOURNIER")
@@ -57,6 +58,9 @@ def dhcp():
 def pinggoogle():
 	os.system("ping 8.8.8.8")
 
+def cmd():
+	os.system("cmd")
+
 lbl_int = tkinter.Label(fenetre, text="Quelle interface vous choisissez ?")
 btn_dock = tkinter.Button(fenetre, text="DOCK", command=dock)
 btn_laptop = tkinter.Button(fenetre, text="LAPTOP", command=laptop)
@@ -70,11 +74,12 @@ btn_ok = tkinter.Button(fenetre, text = "RESET WITH", command=change)
 btn_add = tkinter.Button(fenetre, text="ADD THIS", command=add)
 btn_dhcp = tkinter.Button(fenetre, text="DHCP", command=dhcp)
 btn_pingwantest = tkinter.Button(fenetre, text="PING GOOGLE", command=pinggoogle)
+btn_cmd = tkinter.Button(fenetre, text="CMD", command=cmd)
 btn_quit = tkinter.Button(fenetre, text="QUIT", command=exxit)
 
 lbl_int.pack()
-btn_dock.pack()
-btn_laptop.pack()
+btn_dock.pack(fill=BOTH)
+btn_laptop.pack(fill=BOTH)
 lbl_range.pack()
 texte_range.pack()
 lbl_gw.pack()
@@ -85,5 +90,6 @@ btn_ok.pack()
 btn_add.pack()
 btn_dhcp.pack()
 btn_pingwantest.pack()
+btn_cmd.pack()
 btn_quit.pack()
 fenetre.mainloop()
