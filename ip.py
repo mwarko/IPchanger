@@ -55,11 +55,21 @@ def dhcp():
 	os.system("netsh int ip set dns " + interface + " dhcp")
 	os.system("ipconfig /all")
 
+def ipconfig():
+	os.system("ipconfig /all")
+
+def cmd():
+	os.system("start cd c:\\Users\\marc")
+
 def pinggoogle():
 	os.system("ping 8.8.8.8")
 
-def cmd():
-	os.system("cmd")
+def pingsite():
+	addr = texte_addr.get()
+	os.system("ping " + addr)
+
+def wpscan():
+	os.system("c:\\Users\\marc\\Documents\\GitHub\\WPscan\\dist\wpscanner.exe")
 
 lbl_int = tkinter.Label(fenetre, text="Quelle interface vous choisissez ?")
 btn_dock = tkinter.Button(fenetre, text="DOCK", command=dock)
@@ -74,8 +84,13 @@ btn_ok = tkinter.Button(fenetre, text = "RESET WITH", command=change)
 btn_add = tkinter.Button(fenetre, text="ADD THIS", command=add)
 btn_dhcp = tkinter.Button(fenetre, text="DHCP", command=dhcp)
 btn_pingwantest = tkinter.Button(fenetre, text="PING GOOGLE", command=pinggoogle)
+lbl_addr = tkinter.Label(fenetre, text="Balance l'adresse du ping gros : ")
+texte_addr = tkinter.Entry(fenetre)
+btn_pingsite = tkinter.Button(fenetre, text="PING THIS !", command=pingsite)
+btn_ipconf = tkinter.Button(fenetre, text="IPCONFIG", command=ipconfig)
 btn_cmd = tkinter.Button(fenetre, text="CMD", command=cmd)
-btn_quit = tkinter.Button(fenetre, text="QUIT", command=exxit)
+btn_wpscan = tkinter.Button(fenetre, text="WPSCANNER", command=wpscan)
+btn_quit = tkinter.Button(fenetre, text="EXIT", command=exxit)
 
 lbl_int.pack()
 btn_dock.pack(fill=BOTH)
@@ -90,6 +105,11 @@ btn_ok.pack()
 btn_add.pack()
 btn_dhcp.pack()
 btn_pingwantest.pack()
+lbl_addr.pack()
+texte_addr.pack()
+btn_pingsite.pack()
+btn_ipconf.pack()
 btn_cmd.pack()
+btn_wpscan.pack()
 btn_quit.pack()
 fenetre.mainloop()
