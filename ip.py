@@ -45,7 +45,7 @@ def add():
 	gw = texte_gw.get()
 	ran = texte_range.get()
 	dns = texte_dns.get()
-	os.system("netsh int ip add address name=" + interface + " 192.168." + ran + "." + last + " 255.255.255.0 192.168." + ran + "." + gw + " 0")
+	os.system("netsh int ip add address name=" + interface + " 192.168." + ran + "." + last + " 255.255.255.0 192.168." + ran + "." + gw + " 5")
 	os.system("netsh int ip add dns name=" + interface + " 192.168." + ran + "." + dns)
 	os.system("ipconfig /all")
 
